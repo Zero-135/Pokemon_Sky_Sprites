@@ -75,6 +75,11 @@ DmaxBackSprite = 0,0
 DmaxFrontSprite = 2,24
 DmaxShadowX = 0
 #-------------------------------
+[BASCULIN,1]
+DmaxBackSprite = 0,0
+DmaxFrontSprite = 0,30
+DmaxShadowX = 0
+#-------------------------------
 [BASCULIN,2]
 DmaxBackSprite = 0,0
 DmaxFrontSprite = 0,30

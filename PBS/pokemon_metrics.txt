@@ -1548,7 +1548,7 @@ DmaxBackSprite = 0,0
 DmaxFrontSprite = 0,36
 DmaxShadowX = 0
 #-------------------------------
-[PICHU,2]
+[PICHU,1]
 BackSprite = 0,0
 FrontSprite = 0,23
 ShadowX = 0
@@ -9030,7 +9030,7 @@ FrontSprite = 9,13
 ShadowX = 0
 ShadowSize = 3
 #-------------------------------
-[ARCEUS,9]
+[ARCEUS,18]
 BackSprite = 0,0
 FrontSprite = 2,5
 ShadowX = 0
@@ -9043,6 +9043,12 @@ ShadowX = 0
 ShadowSize = 2
 #-------------------------------
 [BASCULIN,1]
+BackSprite = 0,0
+FrontSprite = 0,19
+ShadowX = 0
+ShadowSize = 2
+#-------------------------------
+[BASCULIN,2]
 BackSprite = 0,0
 FrontSprite = 0,19
 ShadowX = 0
@@ -9075,7 +9081,7 @@ DmaxBackSprite = 0,0
 DmaxFrontSprite = 0,50
 DmaxShadowX = 0
 #-------------------------------
-[GRENINJA,2]
+[GRENINJA,1]
 BackSprite = 0,0
 FrontSprite = 0,15
 ShadowX = 0
@@ -9140,11 +9146,20 @@ DmaxShadowX = 0
 #-------------------------------
 [ZYGARDE,3]
 BackSprite = 0,0
-FrontSprite = 0,4
+FrontSprite = 0,19
 ShadowX = 0
-ShadowSize = 3
+ShadowSize = 2
 DmaxBackSprite = 0,0
-DmaxFrontSprite = 13,6
+DmaxFrontSprite = -2,29
+DmaxShadowX = 0
+#-------------------------------
+[ZYGARDE,4]
+BackSprite = 0,0
+FrontSprite = 0,19
+ShadowX = 0
+ShadowSize = 2
+DmaxBackSprite = 0,0
+DmaxFrontSprite = -2,29
 DmaxShadowX = 0
 #-------------------------------
 [DIANCIE,1]
@@ -10191,12 +10206,6 @@ FrontSprite = -1,10
 ShadowX = 0
 ShadowSize = 3
 #-------------------------------
-[GRENINJA,1]
-BackSprite = 0,0
-FrontSprite = 4,18
-ShadowX = 0
-ShadowSize = 3
-#-------------------------------
 [LANDORUS,1]
 BackSprite = 0,0
 FrontSprite = 0,1
@@ -10212,7 +10221,7 @@ FrontSprite = 3,17
 ShadowX = 0
 ShadowSize = 2
 #-------------------------------
-[MINIOR,10]
+[MINIOR,1]
 BackSprite = 0,0
 FrontSprite = 2,10
 ShadowX = 0
@@ -10221,7 +10230,7 @@ DmaxBackSprite = 0,0
 DmaxFrontSprite = 3,24
 DmaxShadowX = 0
 #-------------------------------
-[MINIOR,11]
+[MINIOR,2]
 BackSprite = 0,0
 FrontSprite = 2,10
 ShadowX = 0
@@ -10230,7 +10239,7 @@ DmaxBackSprite = 0,0
 DmaxFrontSprite = 3,24
 DmaxShadowX = 0
 #-------------------------------
-[MINIOR,12]
+[MINIOR,3]
 BackSprite = 0,0
 FrontSprite = 2,10
 ShadowX = 0
@@ -10239,7 +10248,25 @@ DmaxBackSprite = 0,0
 DmaxFrontSprite = 3,24
 DmaxShadowX = 0
 #-------------------------------
-[MINIOR,13]
+[MINIOR,4]
+BackSprite = 0,0
+FrontSprite = 2,10
+ShadowX = 0
+ShadowSize = 1
+DmaxBackSprite = 0,0
+DmaxFrontSprite = 3,24
+DmaxShadowX = 0
+#-------------------------------
+[MINIOR,5]
+BackSprite = 0,0
+FrontSprite = 2,10
+ShadowX = 0
+ShadowSize = 1
+DmaxBackSprite = 0,0
+DmaxFrontSprite = 3,24
+DmaxShadowX = 0
+#-------------------------------
+[MINIOR,6]
 BackSprite = 0,0
 FrontSprite = 2,10
 ShadowX = 0
@@ -10249,24 +10276,6 @@ DmaxFrontSprite = 3,24
 DmaxShadowX = 0
 #-------------------------------
 [MINIOR,7]
-BackSprite = 0,0
-FrontSprite = 2,10
-ShadowX = 0
-ShadowSize = 1
-DmaxBackSprite = 0,0
-DmaxFrontSprite = 3,24
-DmaxShadowX = 0
-#-------------------------------
-[MINIOR,8]
-BackSprite = 0,0
-FrontSprite = 2,10
-ShadowX = 0
-ShadowSize = 1
-DmaxBackSprite = 0,0
-DmaxFrontSprite = 3,24
-DmaxShadowX = 0
-#-------------------------------
-[MINIOR,9]
 BackSprite = 0,0
 FrontSprite = 2,10
 ShadowX = 0

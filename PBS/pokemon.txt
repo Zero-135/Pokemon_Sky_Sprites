@@ -22989,7 +22989,7 @@ CallRateSOS = 9
 #-------------------------------
 [ALCREMIE]
 Name = Alcremie
-FormName = Forma Crema de Vainilla
+FormName = Forma Crema de Vainilla - Confite Fresa
 Types = FAIRY
 BaseStats = 65,60,75,64,110,121
 GenderRatio = AlwaysFemale

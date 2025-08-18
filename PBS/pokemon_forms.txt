@@ -94,8 +94,13 @@ Generation = 7
 Flags = InheritFormWithEverStone
 WildItemUncommon = PECHABERRY
 #-------------------------------
-[PIKACHU,2]
+[PIKACHU,1]
 FormName = Forma Coqueta
+GenderRatio = AlwaysFemale
+Abilities = LIGHTNINGROD
+#-------------------------------
+[PIKACHU,2]
+FormName = Forma Roquera
 GenderRatio = AlwaysFemale
 Abilities = LIGHTNINGROD
 #-------------------------------
@@ -105,7 +110,7 @@ GenderRatio = AlwaysFemale
 Abilities = LIGHTNINGROD
 #-------------------------------
 [PIKACHU,4]
-FormName = Forma Enmascarada
+FormName = Forma Superstar
 GenderRatio = AlwaysFemale
 Abilities = LIGHTNINGROD
 #-------------------------------
@@ -115,12 +120,7 @@ GenderRatio = AlwaysFemale
 Abilities = LIGHTNINGROD
 #-------------------------------
 [PIKACHU,6]
-FormName = Forma Superstar
-GenderRatio = AlwaysFemale
-Abilities = LIGHTNINGROD
-#-------------------------------
-[PIKACHU,7]
-FormName = Forma Roquera
+FormName = Forma Enmascarada
 GenderRatio = AlwaysFemale
 Abilities = LIGHTNINGROD
 #-------------------------------
@@ -617,11 +617,12 @@ Height = 1.5
 Weight = 33.0
 Generation = 6
 #-------------------------------
-[PICHU,2]
+[PICHU,1]
 FormName = Forma Picoreja
 Generation = 4
 Evolutions = PIKACHU,None,
 CallRateSOS = 0
+Flags = CannotDynamax
 #-------------------------------
 [AMPHAROS,1]
 FormName = Mega Ampharos
@@ -1272,45 +1273,45 @@ FormName = Tipo Acero
 Types = STEEL
 #-------------------------------
 [ARCEUS,9]
-FormName = Tipo Desconocido
-Types = QMARKS
-#-------------------------------
-[ARCEUS,10]
 FormName = Tipo Fuego
 Types = FIRE
 #-------------------------------
-[ARCEUS,11]
+[ARCEUS,10]
 FormName = Tipo Agua
 Types = WATER
 #-------------------------------
-[ARCEUS,12]
+[ARCEUS,11]
 FormName = Tipo Planta
 Types = GRASS
 #-------------------------------
-[ARCEUS,13]
+[ARCEUS,12]
 FormName = Tipo Eléctrico
 Types = ELECTRIC
 #-------------------------------
-[ARCEUS,14]
+[ARCEUS,13]
 FormName = Tipo Psíquico
 Types = PSYCHIC
 #-------------------------------
-[ARCEUS,15]
+[ARCEUS,14]
 FormName = Tipo Hielo
 Types = ICE
 #-------------------------------
-[ARCEUS,16]
+[ARCEUS,15]
 FormName = Tipo Dragón
 Types = DRAGON
 #-------------------------------
-[ARCEUS,17]
+[ARCEUS,16]
 FormName = Tipo Siniestro
 Types = DARK
 #-------------------------------
-[ARCEUS,18]
+[ARCEUS,17]
 FormName = Tipo Hada
 Types = FAIRY
 Generation = 6
+#-------------------------------
+[ARCEUS,18]
+FormName = Tipo Desconocido
+Types = QMARKS
 #-------------------------------
 [AUDINO,1]
 FormName = Mega Audino
@@ -1325,7 +1326,7 @@ Weight = 32.0
 Color = White
 Generation = 6
 #-------------------------------
-[DARUMAKA,2]
+[DARUMAKA,1]
 FormName = Forma Galar
 Types = ICE
 Moves = 1,POWDERSNOW,1,TACKLE,4,TAUNT,8,BITE,12,AVALANCHE,16,WORKUP,20,ICEFANG,24,HEADBUTT,28,ICEPUNCH,32,UPROAR,36,BELLYDRUM,40,BLIZZARD,44,THRASH,48,SUPERPOWER
@@ -1436,6 +1437,12 @@ HiddenAbilities = REGENERATOR
 Height = 1.4
 Shape = Winged
 #-------------------------------
+[RESHIRAM,1]
+FormName = Forma Sobrecarga
+#-------------------------------
+[ZEKROM,1]
+FormName = Forma Sobrecarga
+#-------------------------------
 [THUNDURUS,1]
 FormName = Forma Tótem
 BaseStats = 79,105,70,101,145,80
@@ -1475,7 +1482,7 @@ Height = 3.3
 Pokedex = Se dice que lucha con el objetivo de defender el mundo ideal para humanos y Pokémon que se hará realidad en el futuro.
 #-------------------------------
 [KYUREM,3]
-PokedexForm = 1
+FormName = Forma Blanca Sobrecarga
 BaseStats = 125,120,90,95,170,100
 BaseExp = 350
 EVs = SPECIAL_ATTACK,3
@@ -1485,7 +1492,7 @@ Height = 3.6
 Pokedex = Como heraldo del mundo verdadero que ha de llegar para humanos y Pokémon, ha asumido la misión de protegerlo.
 #-------------------------------
 [KYUREM,4]
-PokedexForm = 2
+FormName = Forma Negra Sobrecarga
 BaseStats = 125,170,100,95,120,90
 BaseExp = 350
 EVs = ATTACK,3
@@ -1517,17 +1524,13 @@ FormName = Forma CrioROM
 FormName = Forma HidroROM
 #-------------------------------
 [GRENINJA,1]
-Abilities = BATTLEBOND
-HiddenAbilities = BATTLEBOND
-EggGroups = Undiscovered
-#-------------------------------
-[GRENINJA,2]
 FormName = Greninja Ash
 BaseStats = 72,145,67,132,153,71
 BaseExp = 320
 Abilities = BATTLEBOND
 HiddenAbilities = BATTLEBOND
 Generation = 7
+EggGroups = Undiscovered
 #-------------------------------
 [VIVILLON,1]
 FormName = Motivo Isleño
@@ -1752,15 +1755,24 @@ Pokedex = Esta es la forma definitiva de Zygarde. Por la boca de su pecho emite 
 Generation = 7
 #-------------------------------
 [ZYGARDE,3]
-PokedexForm = 2
-BaseStats = 216,100,121,85,91,95
-BaseExp = 354
-Abilities = POWERCONSTRUCT
-HiddenAbilities = POWERCONSTRUCT
-Height = 4.5
-Weight = 610.0
+FormName = Nucleo
+BaseStats = 54,100,71,115,61,85
+BaseExp = 243
+Height = 1.2
+Weight = 33.5
 Color = Black
-Shape = BipedalTail
+Shape = Quadruped
+Generation = 7
+#-------------------------------
+[ZYGARDE,4]
+FormName = Celula
+BaseStats = 54,100,71,115,61,85
+BaseExp = 243
+Height = 1.2
+Weight = 33.5
+Color = Black
+Shape = Quadruped
+Generation = 7
 #-------------------------------
 [DIANCIE,1]
 FormName = Mega Diancie
@@ -1870,46 +1882,46 @@ FormName = Tipo Acero
 Types = STEEL
 #-------------------------------
 [SILVALLY,9]
-FormName = Tipo Desconocido
-Types = QMARKS
-#-------------------------------
-[SILVALLY,10]
 FormName = Tipo Fuego
 Types = FIRE
 #-------------------------------
-[SILVALLY,11]
+[SILVALLY,10]
 FormName = Tipo Agua
 Types = WATER
 #-------------------------------
-[SILVALLY,12]
+[SILVALLY,11]
 FormName = Tipo Planta
 Types = GRASS
 #-------------------------------
-[SILVALLY,13]
+[SILVALLY,12]
 FormName = Tipo Eléctrico
 Types = ELECTRIC
 #-------------------------------
-[SILVALLY,14]
+[SILVALLY,13]
 FormName = Tipo Psíquico
 Types = PSYCHIC
 #-------------------------------
-[SILVALLY,15]
+[SILVALLY,14]
 FormName = Tipo Hielo
 Types = ICE
 #-------------------------------
-[SILVALLY,16]
+[SILVALLY,15]
 FormName = Tipo Dragón
 Types = DRAGON
 #-------------------------------
-[SILVALLY,17]
+[SILVALLY,16]
 FormName = Tipo Siniestro
 Types = DARK
 #-------------------------------
-[SILVALLY,18]
+[SILVALLY,17]
 FormName = Tipo Hada
 Types = FAIRY
 #-------------------------------
-[MINIOR,7]
+[SILVALLY,18]
+FormName = Tipo Desconocido
+Types = QMARKS
+#-------------------------------
+[MINIOR,1]
 FormName = Forma Núcleo Rojo
 BaseStats = 60,100,60,120,100,60
 BaseExp = 175
@@ -1919,7 +1931,7 @@ Color = Red
 Pokedex = Se alimenta de las partículas que flotan la atmósfera. El color de su núcleo depende de la composición de estas.
 Flags = InheritFormFromMother
 #-------------------------------
-[MINIOR,8]
+[MINIOR,2]
 FormName = Forma Núcleo Naranja
 BaseStats = 60,100,60,120,100,60
 BaseExp = 175
@@ -1929,7 +1941,7 @@ Color = Red
 Pokedex = Se alimenta de las partículas que flotan la atmósfera. El color de su núcleo depende de la composición de estas.
 Flags = InheritFormFromMother
 #-------------------------------
-[MINIOR,9]
+[MINIOR,3]
 FormName = Forma Núcleo Amarillo
 BaseStats = 60,100,60,120,100,60
 BaseExp = 175
@@ -1939,7 +1951,7 @@ Color = Yellow
 Pokedex = Se alimenta de las partículas que flotan la atmósfera. El color de su núcleo depende de la composición de estas.
 Flags = InheritFormFromMother
 #-------------------------------
-[MINIOR,10]
+[MINIOR,4]
 FormName = Forma Núcleo Verde
 BaseStats = 60,100,60,120,100,60
 BaseExp = 175
@@ -1949,7 +1961,7 @@ Color = Green
 Pokedex = Se alimenta de las partículas que flotan la atmósfera. El color de su núcleo depende de la composición de estas.
 Flags = InheritFormFromMother
 #-------------------------------
-[MINIOR,11]
+[MINIOR,5]
 FormName = Forma Núcleo Azul
 BaseStats = 60,100,60,120,100,60
 BaseExp = 175
@@ -1959,7 +1971,7 @@ Color = Blue
 Pokedex = Se alimenta de las partículas que flotan la atmósfera. El color de su núcleo depende de la composición de estas.
 Flags = InheritFormFromMother
 #-------------------------------
-[MINIOR,12]
+[MINIOR,6]
 FormName = Forma Núcleo Añil
 BaseStats = 60,100,60,120,100,60
 BaseExp = 175
@@ -1969,7 +1981,7 @@ Color = Blue
 Pokedex = Se alimenta de las partículas que flotan la atmósfera. El color de su núcleo depende de la composición de estas.
 Flags = InheritFormFromMother
 #-------------------------------
-[MINIOR,13]
+[MINIOR,7]
 FormName = Forma Núcleo Violeta
 BaseStats = 60,100,60,120,100,60
 BaseExp = 175
@@ -1982,6 +1994,12 @@ Flags = InheritFormFromMother
 [MIMIKYU,1]
 FormName = Forma Descubierta
 Pokedex = Le entristece que pueda descubrirse su identidad. Jamás perdona a quienes rompen su disfraz y no descansa hasta vengarse.
+#-------------------------------
+[SOLGALEO,1]
+FormName = Fase Sol Ascendente
+#-------------------------------
+[LUNALA,1]
+FormName = Fase Luna Llena
 #-------------------------------
 [NECROZMA,1]
 FormName = Forma Melena Crepuscular
@@ -2018,21 +2036,13 @@ Color = Yellow
 Pokedex = Esta forma es el resultado de haber absorbido una gran cantidad de energía luminosa. Emite rayos láser por todo el cuerpo.
 Flags = Legendary,CannotDynamax
 #-------------------------------
-[NECROZMA,4]
-PokedexForm = 3
-Types = PSYCHIC,DRAGON
-BaseStats = 97,167,97,129,167,97
-BaseExp = 377
-EVs = ATTACK,1,SPECIAL_ATTACK,1,SPEED,1
-Abilities = NEUROFORCE
-Height = 7.5
-Color = Yellow
-Flags = Legendary,CannotDynamax
-#-------------------------------
 [MAGEARNA,1]
 FormName = Forma Color Vetusta
 Color = Red
 Pokedex = Este es el hermoso aspecto que presentaba Magearna cuando fue ofrecido como presente a la hija de un rey hace 500 años.
+#-------------------------------
+[MARSHADOW,1]
+FormName = Forma Cénit
 #-------------------------------
 [CRAMORANT,1]
 FormName = Forma Tragatodo
@@ -2058,179 +2068,191 @@ Evolutions = POLTEAGEIST,Item,CHIPPEDPOT
 FormName = Forma Genuina
 Pokedex = Tiene un sabor y un aroma sumamente singulares. Si su Entrenador se hace pleno merecedor de su confianza, le permite catarlo ligeramente.
 #-------------------------------
+[ALCREMIE,1]
+FormName = Forma Crema de Vainilla - Confite Fruto
+#-------------------------------
+[ALCREMIE,2]
+FormName = Forma Crema de Vainilla - Confite Corazón
+#-------------------------------
+[ALCREMIE,3]
+FormName = Forma Crema de Vainilla - Confite Estrella
+#-------------------------------
+[ALCREMIE,4]
+FormName = Forma Crema de Vainilla - Confite Trébol
+#-------------------------------
+[ALCREMIE,5]
+FormName = Forma Crema de Vainilla - Confite Flor
+#-------------------------------
+[ALCREMIE,6]
+FormName = Forma Crema de Vainilla - Confite Lazo
+#-------------------------------
 [ALCREMIE,7]
-FormName = Forma Crema Rosa
+FormName = Forma Crema Rosa - Confite Fresa
 #-------------------------------
 [ALCREMIE,8]
-PokedexForm = 7
+FormName = Forma Crema Rosa - Confite Fruto
 #-------------------------------
 [ALCREMIE,9]
-PokedexForm = 7
+FormName = Forma Crema Rosa - Confite Corazón
 #-------------------------------
 [ALCREMIE,10]
-PokedexForm = 7
+FormName = Forma Crema Rosa - Confite Estrella
 #-------------------------------
 [ALCREMIE,11]
-PokedexForm = 7
+FormName = Forma Crema Rosa - Confite Trébol
 #-------------------------------
 [ALCREMIE,12]
-PokedexForm = 7
+FormName = Forma Crema Rosa - Confite Flor
 #-------------------------------
 [ALCREMIE,13]
-PokedexForm = 7
+FormName = Forma Crema Rosa - Confite Lazo
 #-------------------------------
 [ALCREMIE,14]
-FormName = Forma Crema de Té
-Color = Green
+FormName = Forma Crema de Té - Confite Fresa
 #-------------------------------
 [ALCREMIE,15]
-PokedexForm = 14
+FormName = Forma Crema de Té - Confite Fruto
 #-------------------------------
 [ALCREMIE,16]
-PokedexForm = 14
+FormName = Forma Crema de Té - Confite Corazón
 #-------------------------------
 [ALCREMIE,17]
-PokedexForm = 14
+FormName = Forma Crema de Té - Confite Estrella
 #-------------------------------
 [ALCREMIE,18]
-PokedexForm = 14
+FormName = Forma Crema de Té - Confite Trébol
 #-------------------------------
 [ALCREMIE,19]
-PokedexForm = 14
+FormName = Forma Crema de Té - Confite Flor
 #-------------------------------
 [ALCREMIE,20]
-PokedexForm = 14
+FormName = Forma Crema de Té - Confite Lazo
 #-------------------------------
 [ALCREMIE,21]
-FormName = Forma Crema de Menta
-Color = Blue
+FormName = Forma Crema de Menta - Confite Fresa
 #-------------------------------
 [ALCREMIE,22]
-PokedexForm = 21
+FormName = Forma Crema de Menta - Confite Fruto
 #-------------------------------
 [ALCREMIE,23]
-PokedexForm = 21
+FormName = Forma Crema de Menta - Confite Corazón
 #-------------------------------
 [ALCREMIE,24]
-PokedexForm = 21
+FormName = Forma Crema de Menta - Confite Estrella
 #-------------------------------
 [ALCREMIE,25]
-PokedexForm = 21
+FormName = Forma Crema de Menta - Confite Trébol
 #-------------------------------
 [ALCREMIE,26]
-PokedexForm = 21
+FormName = Forma Crema de Menta - Confite Flor
 #-------------------------------
 [ALCREMIE,27]
-PokedexForm = 21
+FormName = Forma Crema de Menta - Confite Lazo
 #-------------------------------
 [ALCREMIE,28]
-FormName = Forma Crema de Limón
-Color = Yellow
+FormName = Forma Crema de Limón - Confite Fresa
 #-------------------------------
 [ALCREMIE,29]
-PokedexForm = 28
+FormName = Forma Crema de Limón - Confite Fruto
 #-------------------------------
 [ALCREMIE,30]
-PokedexForm = 28
+FormName = Forma Crema de Limón - Confite Corazón
 #-------------------------------
 [ALCREMIE,31]
-PokedexForm = 28
+FormName = Forma Crema de Limón - Confite Estrella
 #-------------------------------
 [ALCREMIE,32]
-PokedexForm = 28
+FormName = Forma Crema de Limón - Confite Trébol
 #-------------------------------
 [ALCREMIE,33]
-PokedexForm = 28
+FormName = Forma Crema de Limón - Confite Flor
 #-------------------------------
 [ALCREMIE,34]
-PokedexForm = 28
+FormName = Forma Crema de Limón - Confite Lazo
 #-------------------------------
 [ALCREMIE,35]
-FormName = Forma Crema Salada
+FormName = Forma Crema Salada - Confite Fresa
 #-------------------------------
 [ALCREMIE,36]
-PokedexForm = 35
+FormName = Forma Crema Salada - Confite Fruto
 #-------------------------------
 [ALCREMIE,37]
-PokedexForm = 35
+FormName = Forma Crema Salada - Confite Corazón
 #-------------------------------
 [ALCREMIE,38]
-PokedexForm = 35
+FormName = Forma Crema Salada - Confite Estrella
 #-------------------------------
 [ALCREMIE,39]
-PokedexForm = 35
+FormName = Forma Crema Salada - Confite Trébol
 #-------------------------------
 [ALCREMIE,40]
-PokedexForm = 35
+FormName = Forma Crema Salada - Confite Flor
 #-------------------------------
 [ALCREMIE,41]
-PokedexForm = 35
+FormName = Forma Crema Salada - Confite Lazo
 #-------------------------------
 [ALCREMIE,42]
-FormName = Forma Crema Rosa
-Color = Yellow
+FormName = Forma Mezcla Rosa - Confite Fresa
 #-------------------------------
 [ALCREMIE,43]
-PokedexForm = 42
+FormName = Forma Mezcla Rosa - Confite Fruto
 #-------------------------------
 [ALCREMIE,44]
-PokedexForm = 42
+FormName = Forma Mezcla Rosa - Confite Corazón
 #-------------------------------
 [ALCREMIE,45]
-PokedexForm = 42
+FormName = Forma Mezcla Rosa - Confite Estrella
 #-------------------------------
 [ALCREMIE,46]
-PokedexForm = 42
+FormName = Forma Mezcla Rosa - Confite Trébol
 #-------------------------------
 [ALCREMIE,47]
-PokedexForm = 42
+FormName = Forma Mezcla Rosa - Confite Flor
 #-------------------------------
 [ALCREMIE,48]
-PokedexForm = 42
+FormName = Forma Mezcla Rosa - Confite Lazo
 #-------------------------------
 [ALCREMIE,49]
-FormName = Forma Mezcla Caramelo
-Color = Brown
+FormName = Forma Mezcla Caramelo - Confite Fresa
 #-------------------------------
 [ALCREMIE,50]
-PokedexForm = 49
+FormName = Forma Mezcla Caramelo - Confite Fruto
 #-------------------------------
 [ALCREMIE,51]
-PokedexForm = 49
+FormName = Forma Mezcla Caramelo - Confite Corazón
 #-------------------------------
 [ALCREMIE,52]
-PokedexForm = 49
+FormName = Forma Mezcla Caramelo - Confite Estrella
 #-------------------------------
 [ALCREMIE,53]
-PokedexForm = 49
+FormName = Forma Mezcla Caramelo - Confite Trébol
 #-------------------------------
 [ALCREMIE,54]
-PokedexForm = 49
+FormName = Forma Mezcla Caramelo - Confite Flor
 #-------------------------------
 [ALCREMIE,55]
-PokedexForm = 49
+FormName = Forma Mezcla Caramelo - Confite Lazo
 #-------------------------------
 [ALCREMIE,56]
-FormName = Forma Mezcla Tres Sabores
-Color = Yellow
+FormName = Forma Tres Sabores - Confite Fresa
 #-------------------------------
 [ALCREMIE,57]
-PokedexForm = 56
+FormName = Forma Tres Sabores - Confite Fruto
 #-------------------------------
 [ALCREMIE,58]
-PokedexForm = 56
+FormName = Forma Tres Sabores - Confite Corazón
 #-------------------------------
 [ALCREMIE,59]
-PokedexForm = 56
+FormName = Forma Tres Sabores - Confite Estrella
 #-------------------------------
 [ALCREMIE,60]
-PokedexForm = 56
+FormName = Forma Tres Sabores - Confite Trébol
 #-------------------------------
 [ALCREMIE,61]
-PokedexForm = 56
+FormName = Forma Tres Sabores - Confite Flor
 #-------------------------------
 [ALCREMIE,62]
-PokedexForm = 56
+FormName = Forma Tres Sabores - Confite Lazo
 #-------------------------------
 [EISCUE,1]
 FormName = Forma Cara Deshielo
@@ -2260,7 +2282,23 @@ BaseExp = 360
 Weight = 355.0
 Pokedex = En esta forma, capaz de cortar cualquier cosa, es temido y respetado y se lo conoce como la Regia Espada Silvana.
 #-------------------------------
+[ZACIAN,2]
+FormName = Forma Espada Suprema
+Types = FAIRY,STEEL
+BaseStats = 92,170,115,148,80,115
+BaseExp = 360
+Weight = 355.0
+Pokedex = En esta forma, capaz de cortar cualquier cosa, es temido y respetado y se lo conoce como la Regia Espada Silvana.
+#-------------------------------
 [ZAMAZENTA,1]
+FormName = Forma Escudo Supremo
+Types = FIGHTING,STEEL
+BaseStats = 92,130,145,128,80,145
+BaseExp = 360
+Weight = 785.0
+Pokedex = Esta forma, temida y venerada por igual, le ha valido el nombre de Regio Escudo Guerrero por su capacidad de repeler cualquier ataque.
+#-------------------------------
+[ZAMAZENTA,2]
 FormName = Forma Escudo Supremo
 Types = FIGHTING,STEEL
 BaseStats = 92,130,145,128,80,145
@@ -2274,6 +2312,10 @@ Types = FIGHTING,WATER
 Moves = 0,SURGINGSTRIKES,1,AQUAJET,1,ROCKSMASH,1,LEER,1,ENDURE,1,FOCUSENERGY,12,AERIALACE,16,SCARYFACE,20,HEADBUTT,24,BRICKBREAK,28,DETECT,32,BULKUP,36,IRONHEAD,40,DYNAMICPUNCH,44,COUNTER,48,CLOSECOMBAT,52,FOCUSPUNCH
 TutorMoves = ACROBATICS,ATTRACT,AURASPHERE,BODYPRESS,BODYSLAM,BRICKBREAK,BRINE,BULKUP,CAPTIVATE,CLOSECOMBAT,COACHING,CONFIDE,DIG,DIVE,DOUBLEEDGE,DOUBLETEAM,DRAINPUNCH,ENDURE,FACADE,FALSESWIPE,FIREPUNCH,FOCUSBLAST,FOCUSENERGY,FRUSTRATION,GIGAIMPACT,HELPINGHAND,HIDDENPOWER,ICEPUNCH,IRONDEFENSE,IRONHEAD,LIQUIDATION,LOWKICK,LOWSWEEP,MEGAKICK,MEGAPUNCH,MIMIC,NATURALGIFT,POISONJAB,PROTECT,RAINDANCE,REST,RETALIATE,RETURN,REVENGE,REVERSAL,ROCKSLIDE,ROCKTOMB,ROUND,SCALD,SCARYFACE,SECRETPOWER,SLEEPTALK,SNORE,STONEEDGE,SUBSTITUTE,SUPERPOWER,SWAGGER,SWIFT,TAUNT,THUNDERPUNCH,TOXIC,UTURN,WATERFALL,WHIRLPOOL,WORKUP,ZENHEADBUTT,AERIALACE,CHILLINGWATER,FLING,FOCUSPUNCH,ICESPINNER,SWORDSDANCE,TAKEDOWN,TRAILBLAZE
 Pokedex = Su estilo de combate se inspira en el flujo del agua y consiste en castigar al oponente de forma constante e ininterrumpida.
+#-------------------------------
+[ZARUDE,1]
+FormName = Zarude papá
+Pokedex = Ha abandonado la manada para criar a un bebé humano. Lleva una manta impregnada de un olor que calma el llanto del retoño.
 #-------------------------------
 [CALYREX,1]
 FormName = Forma Jinete Glacial
@@ -2509,7 +2551,7 @@ Category = Pirueta
 Pokedex = Habitar en montañas cubiertas de nieves le ha permitido desarrollar unas piernas robustas. Expulsa un aroma por su flor que infunde ánimo a quien esté cerca.
 Generation = 8
 #-------------------------------
-[BASCULIN,2]
+[BASCULIN,1]
 FormName = Forma Raya Roja
 Abilities = RECKLESS,ADAPTABILITY
 Moves=1,WATERGUN,1,TAILWHIP,4,TACKLE,8,FLAIL,12,AQUAJET,16,BITE,20,SCARYFACE,24,HEADBUTT,28,SOAK,32,CRUNCH,36,TAKEDOWN,40,FINALGAMBIT,44,AQUATAIL,44,WAVECRASH,48,THRASH,52,DOUBLEEDGE,56,HEADSMASH
@@ -2522,7 +2564,7 @@ WildItemUncommon = DEEPSEATOOTH
 Flags = InheritFormFromMother
 Evolutions = BASCULEGION,None,
 #-------------------------------
-[BASCULIN,3]
+[BASCULIN,2]
 FormName = Forma Raya Azul
 Abilities = ROCKHEAD,ADAPTABILITY
 Moves=1,WATERGUN,1,TAILWHIP,4,TACKLE,8,FLAIL,12,AQUAJET,16,BITE,20,SCARYFACE,24,HEADBUTT,28,SOAK,32,CRUNCH,36,TAKEDOWN,40,FINALGAMBIT,44,AQUATAIL,44,WAVECRASH,48,THRASH,52,DOUBLEEDGE,56,HEADSMASH
@@ -2775,11 +2817,14 @@ Pokedex = Esta forma se especializa en la defensiva. Resiste los impactos con la
 Flags = Legendary,TeraType_ROCK
 #-------------------------------
 [OGERPON,4]
-PokedexForm = 0
+FormName = Máscara Turquesa
+Types = GRASS
+Abilities = DEFIANT
+Color = Green
+Flags = Legendary,TeraType_GRASS
 #-------------------------------
 [OGERPON,5]
 FormName = Máscara Fuente
-PokedexForm = 1
 Types = GRASS,WATER
 Abilities = WATERABSORB
 Color = Blue
@@ -2787,7 +2832,6 @@ Flags = Legendary,TeraType_WATER
 #-------------------------------
 [OGERPON,6]
 FormName = Máscara Horno
-PokedexForm = 2
 Types = GRASS,FIRE
 Abilities = MOLDBREAKER
 Color = Red
@@ -2795,7 +2839,6 @@ Flags = Legendary,TeraType_FIRE
 #-------------------------------
 [OGERPON,7]
 FormName = Máscara Cimiento
-PokedexForm = 3
 Types = GRASS,ROCK
 Abilities = STURDY
 Color = Gray
@@ -2803,7 +2846,10 @@ Flags = Legendary,TeraType_ROCK
 #-------------------------------
 [OGERPON,8]
 FormName = Máscara Turquesa teracristalizado
+Types = GRASS
 Abilities = EMBODYASPECT
+Color = Green
+Flags = Legendary,TeraType_GRASS
 #-------------------------------
 [OGERPON,9]
 FormName = Máscara Fuente teracristalizado
@@ -2847,3 +2893,6 @@ Weight = 77.0
 Shape = Head
 Pokedex = Adopta esta forma cuando su energía Teracristal se ve amplificada descomunalmente. Se asemeja a la imagen del mundo que la gente tenía antaño.
 Flags = Legendary,TeraType_STELLAR
+#-------------------------------
+[PECHARUNT,1]
+FormName = Pecharunt Caparazón

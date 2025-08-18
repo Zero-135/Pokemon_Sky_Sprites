@@ -28,7 +28,7 @@ Pokedex = Crystallized Gigantamax energy makes up this Pokémon's blindingly bri
 Generation = 8
 GmaxMove = GMAXBEFUDDLE
 #-------------------------------
-[PIKACHU,17]
+[PIKACHU,15]
 FormName = Gigantamax
 Height = 21.0
 Pokedex = Its Gigantamax power expanded, forming its supersized body and towering tail.
@@ -70,7 +70,7 @@ Pokedex = Over 5,000 people can ride on its shell at once. And it's a very comfo
 Generation = 8
 GmaxMove = GMAXRESONANCE
 #-------------------------------
-[EEVEE,2]
+[EEVEE,1]
 FormName = Gigantamax
 Height = 18.0
 Pokedex = Gigantamax energy upped the fluffiness of the fur around Eevee's neck. The fur will envelop a foe, capturing its body and captivating its mind.
@@ -159,13 +159,13 @@ Pokedex = Sand swirls around its body with such speed and power that it could pu
 GmaxMove = GMAXSANDBLAST
 #-------------------------------
 [TOXTRICITY,2]
-FormName = Gigantamax
+FormName = Gigantamax Aguda
 Height = 24.0
 Pokedex = Out of control after its own poison penetrated its brain, it tears across the land in a rampage, contaminating the earth with toxic sweat.
 GmaxMove = GMAXSTUNSHOCK
 #-------------------------------
 [TOXTRICITY,3]
-PokedexForm = 2
+FormName = Gigantamax Grave
 Abilities = PUNKROCK,MINUS
 Moves = 0,SPARK,1,LEER,1,GROWL,1,ACID,1,THUNDERSHOCK,1,FLAIL,1,ACIDSPRAY,1,BELCH,1,NOBLEROAR,1,NUZZLE,1,TEARFULLOOK,4,CHARGE,8,SHOCKWAVE,12,SCARYFACE,16,TAUNT,24,SCREECH,28,SWAGGER,32,TOXIC,36,DISCHARGE,40,POISONJAB,44,OVERDRIVE,48,BOOMBURST,52,MAGNETICFLUX
 GmaxMove = GMAXSTUNSHOCK

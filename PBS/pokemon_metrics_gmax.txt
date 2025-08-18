@@ -36,7 +36,7 @@ DmaxBackSprite = 0,0
 DmaxFrontSprite = 0,9
 DmaxShadowX = 0
 #-------------------------------
-[PIKACHU,17]
+[PIKACHU,15]
 BackSprite = 0,0
 FrontSprite = 6,5
 ShadowX = 0
@@ -90,7 +90,7 @@ DmaxBackSprite = 0,0
 DmaxFrontSprite = 0,13
 DmaxShadowX = 0
 #-------------------------------
-[EEVEE,2]
+[EEVEE,1]
 BackSprite = 0,0
 FrontSprite = 0,12
 ShadowX = 0

@@ -1,6 +1,6 @@
 ### Apply changes by holding SHIFT while compiling. ###
 #-------------------------------
-[PICHU,2]
+[PICHU,1]
 CallRateSOS = 0
 #-------------------------------
 [FLOETTE,5]
