@@ -1,3 +1,5 @@
+Settings::DEXES_WITH_OFFSETS  = [4]
+
 module GameData
     class Species
         def self.check_graphic_file(path, species, form = 0, gender = 0, shiny = false, shadow = false, subfolder = "")
@@ -69,7 +71,7 @@ class PokemonPokedexInfo_Scene
         if @sprites["formback"]
             @sprites["formback"].setSpeciesBitmap(@species, @gender, @form, @shiny, false, true)
             @sprites["formback"].y = 256
-            @sprites["formback"].y += metrics_data.back_sprite[1] * 2
+            #@sprites["formback"].y += metrics_data.back_sprite[1] * 2
         end
         @sprites["formicon"]&.pbSetParams(@species, @gender, @form, @shiny)
     end
