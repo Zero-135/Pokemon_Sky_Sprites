@@ -48,64 +48,64 @@
 
 # puts $~[0]
 
-class EjemploPadre
-  attr_reader :val
-  def initialize
-    @val = "valor padre"
-  end
+# class EjemploPadre
+#   attr_reader :val
+#   def initialize
+#     @val = "valor padre"
+#   end
 
-  def actualizar
-    @val = "valor nuevo padre"
-  end
-end
+#   def actualizar
+#     @val = "valor nuevo padre"
+#   end
+# end
 
 
-class Ejemplo
-  attr_reader :lectura
-  attr_reader :padre
-  def initialize
-    @lectura = "valor inicial"
-    @padre = EjemploPadre.new
-    # puts lectura
-    # puts self.lectura
-  end
+# class Ejemplo
+#   attr_reader :lectura
+#   attr_reader :padre
+#   def initialize
+#     @lectura = "valor inicial"
+#     @padre = EjemploPadre.new
+#     # puts lectura
+#     # puts self.lectura
+#   end
 
-  def lectura
-    puts " desde el metodo de instancia"
-  end
+#   def lectura
+#     puts " desde el metodo de instancia"
+#   end
 
-  def self.lectura
-    puts " desde el metodo de clase"
-  end
+#   def self.lectura
+#     puts " desde el metodo de clase"
+#   end
 
-  def otro_metodo
-    self.lectura
-  end
+#   def otro_metodo
+#     self.lectura
+#   end
 
-  def cambiar_valor
-    @lectura = "valor cambiado"
-  end
+#   def cambiar_valor
+#     @lectura = "valor cambiado"
+#   end
 
-  def mostrar_variable
-    puts @lectura
-  end
+#   def mostrar_variable
+#     puts @lectura
+#   end
 
-  def mostrar_variable2
-    puts @lectura
-  end
-end
+#   def mostrar_variable2
+#     puts @lectura
+#   end
+# end
 
-def update(ej)
-  ej.cambiar_valor
-end
+# def update(ej)
+#   ej.cambiar_valor
+# end
 
-ej = Ejemplo.new
-# puts ej.mostrar_variable
-# update(ej)
-# puts ej.mostrar_variable
-puts ej.padre.val
-ej.padre.actualizar
-puts ej.padre.val 
+# ej = Ejemplo.new
+# # puts ej.mostrar_variable
+# # update(ej)
+# # puts ej.mostrar_variable
+# puts ej.padre.val
+# ej.padre.actualizar
+# puts ej.padre.val 
 
 
 
@@ -155,3 +155,37 @@ puts ej.padre.val
 
 # my_proc = proc { |x| x*2 }
 # puts my_proc.call(5)  # => 10
+
+class Pokemon
+  def initialize(species, level, player=0)
+    puts species
+    puts level
+    puts player
+  end
+end
+
+class Pokemon
+  alias initialize_old initialize
+  def initialize(species,level,player)
+    initialize_old(species,level)
+    puts "Nuevo metodo"
+  end
+end
+
+class Pokemon
+  def initialize(species, level, player=0)
+    puts species
+    puts level
+    puts player
+  end
+end
+
+class Pokemon
+  alias initialize_old initialize
+  def initialize(species,level,player)
+    initialize_old(species,level,player)
+    puts "Nuevo metodo"
+  end
+end
+
+pkm = Pokemon.new(:Pikachu, 5, 1)

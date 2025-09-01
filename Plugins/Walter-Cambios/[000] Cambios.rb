@@ -305,3 +305,279 @@ class PokemonPokedexInfo_Scene
         return @index
   end
 end
+
+def pbAddPokemon(pkmn, level = 1, see_form = true)
+  return false if !pkmn
+  if pbBoxesFull?
+    pbMessage(_INTL("¡No hay espacio para más Pokémon!") + "\1")
+    pbMessage(_INTL("¡Las Cajas del PC están llenas y no tienen más espacio!"))
+    return false
+  end
+  pkmn = Pokemon.new(pkmn, level, $player, true, false) if !pkmn.is_a?(Pokemon)
+  species_name = pkmn.speciesName
+  pbMessage(_INTL("¡{1} obtuvo un {2}!", $player.name, species_name) + "\\me[Pkmn get]\\wtnp[80]")
+  was_owned = $player.owned?(pkmn.species)
+  $player.pokedex.set_seen(pkmn.species)
+  $player.pokedex.set_owned(pkmn.species)
+  $player.pokedex.register(pkmn) if see_form
+  # Show Pokédex entry for new species if it hasn't been owned before
+  if Settings::SHOW_NEW_SPECIES_POKEDEX_ENTRY_MORE_OFTEN && see_form && !was_owned &&
+     $player.has_pokedex && $player.pokedex.species_in_unlocked_dex?(pkmn.species)
+    pbMessage(_INTL("Los datos de {1} se han añadido a la Pokédex.", species_name))
+    $player.pokedex.register_last_seen(pkmn)
+    pbFadeOutIn do
+      scene = PokemonPokedexInfo_Scene.new
+      screen = PokemonPokedexInfoScreen.new(scene)
+      screen.pbDexEntry(pkmn.species)
+    end
+  end
+  # Nickname and add the Pokémon
+  pbNicknameAndStore(pkmn)
+  return true
+end
+
+def pbPartyScreen(idxBattler, canCancel = false, mode = 0)
+    # # Fade out and hide all sprites
+    # visibleSprites = pbFadeOutAndHide(@sprites)
+    # # Get player's party
+    # partyPos = @battle.pbPartyOrder(idxBattler)
+    # partyStart, _partyEnd = @battle.pbTeamIndexRangeFromBattlerIndex(idxBattler)
+    # modParty = @battle.pbPlayerDisplayParty(idxBattler)
+    
+    # Get player's party
+    partyPos =Array.new($player.party.length) { |i| i }
+    partyStart = [0][idxBattler]
+    modParty = $player.party
+    
+    # Start party screen
+    scene = PokemonParty_Scene.new
+    switchScreen = PokemonPartyScreen.new(scene, modParty)
+    msg = _INTL("Elige un Pokémon.")
+    msg = _INTL("¿Qué Pokémon enviar al PC?") if mode == 1
+    #switchScreen.pbStartScene(msg, @battle.pbNumPositions(0, 0))
+    switchScreen.pbStartScene(msg, 1)
+    # Loop while in party screen
+    loop do
+      # Select a Pokémon
+      scene.pbSetHelpText(msg)
+      idxParty = switchScreen.pbChoosePokemon
+      if idxParty < 0
+        next if !canCancel
+        break
+      end
+      # Choose a command for the selected Pokémon
+      cmdSwitch  = -1
+      cmdBoxes   = -1
+      cmdSummary = -1
+      cmdSelect  = -1
+      commands = []
+      commands[cmdSwitch  = commands.length] = _INTL("Cambiar") if mode == 0 && modParty[idxParty].able? &&
+                                                                     (@battle.canSwitch || !canCancel)
+      commands[cmdBoxes   = commands.length] = _INTL("Enviar al PC") if mode == 1
+      commands[cmdSelect  = commands.length] = _INTL("Seleccionar") if mode == 2 && modParty[idxParty].fainted?
+      commands[cmdSummary = commands.length] = _INTL("Datos")
+      commands[commands.length]              = _INTL("Cancelar")
+      command = scene.pbShowCommands(_INTL("¿Qué hacer con {1}?", modParty[idxParty].name), commands)
+      if (cmdSwitch >= 0 && command == cmdSwitch) ||   # Switch In
+         (cmdBoxes >= 0 && command == cmdBoxes)   ||   # Send to Boxes
+         (cmdSelect >= 0 && command == cmdSelect)      # Select for Revival Blessing
+        idxPartyRet = -1
+        partyPos.each_with_index do |pos, i|
+          next if pos != idxParty + partyStart
+          idxPartyRet = i
+          break
+        end
+        break if yield idxPartyRet, switchScreen
+      elsif cmdSummary >= 0 && command == cmdSummary   # Summary
+        scene.pbSummary(idxParty, true)
+      end
+    end
+    # Close party screen
+    switchScreen.pbEndScene
+end
+
+def pbNicknameAndStore(pkmn)
+    if pbBoxesFull?
+        pbMessage(_INTL("¡No hay espacio para más Pokémon!") + "\1")
+        pbMessage(_INTL("¡Las Cajas del PC están llenas y no tienen más espacio!"))
+        return
+    end
+    $player.pokedex.set_seen(pkmn.species)
+    $player.pokedex.set_owned(pkmn.species)
+
+    # Nickname the Pokémon (unless it's a Shadow Pokémon)
+    if !pkmn.shadowPokemon?
+        pbNickname(pkmn)
+    end
+
+    battleRules = $game_temp.battle_rules
+    sendToBoxes = 1
+    sendToBoxes = $PokemonSystem.sendtoboxes if Settings::NEW_CAPTURE_CAN_REPLACE_PARTY_MEMBER
+    sendToBoxes = 2 if battleRules["forceCatchIntoParty"]
+
+    scene = BattleCreationHelperMethods.create_battle_scene
+    peer  = Battle::Peer.new
+
+    # Store the Pokémon
+    if $player.party_full? && (sendToBoxes == 0 || sendToBoxes == 2)   # Ask/must add to party
+      cmds = [_INTL("Agregar al equipo"),
+              _INTL("Enviar a una caja"),
+              _INTL("Ver datos de {1}", pkmn.name),
+              _INTL("Ver equipo")]
+      cmds.delete_at(1) if sendToBoxes == 2   # Remove "Send to a Box" option
+      loop do
+        cmd = pbMessage(_INTL("¿A dónde quieres enviar a {1}?", pkmn.name), cmds, 99)
+        next if cmd == 99 && sendToBoxes == 2   # Can't cancel if must add to party
+        break if cmd == 99   # Cancelling = send to a Box
+        cmd += 1 if cmd >= 1 && sendToBoxes == 2
+        case cmd
+        when 0   # Add to your party
+          pbMessage(_INTL("Elige a un Pokémon de tu equipo para enviar a las cajas."))
+          party_index = -1
+          pbPartyScreen(0, (sendToBoxes != 2), 1) do |idxParty, _partyScene|
+            party_index = idxParty
+            next true
+          end
+          next if party_index < 0   # Cancelled
+          party_size = $player.party.length
+          # Get chosen Pokémon and clear battle-related conditions
+          send_pkmn = $player.party[party_index]
+          
+          #peer.pbOnLeavingBattle(self, send_pkmn, @usedInBattle[0][party_index], true)
+          peer.pbOnLeavingBattle(self, send_pkmn, false, true)#revisar
+
+          send_pkmn.statusCount = 0 if send_pkmn.status == :POISON   # Bad poison becomes regular
+          send_pkmn.makeUnmega
+          send_pkmn.makeUnprimal
+          # Send chosen Pokémon to storage
+          stored_box = peer.pbStorePokemon($player, send_pkmn)
+          $player.party.delete_at(party_index)
+          box_name = peer.pbBoxName(stored_box)
+          pbMessage(_INTL("{1} fue enviado a la caja \"{2}\".", send_pkmn.name, box_name))
+          # Rearrange all remembered properties of party Pokémon          
+          # (party_index...party_size).each do |idx|
+          #   if idx < party_size - 1
+          #     @initialItems[0][idx] = @initialItems[0][idx + 1]
+          #     $game_temp.party_levels_before_battle[idx] = $game_temp.party_levels_before_battle[idx + 1]
+          #     $game_temp.party_critical_hits_dealt[idx] = $game_temp.party_critical_hits_dealt[idx + 1]
+          #     $game_temp.party_direct_damage_taken[idx] = $game_temp.party_direct_damage_taken[idx + 1]
+          #   else
+          #     @initialItems[0][idx] = nil
+          #     $game_temp.party_levels_before_battle[idx] = nil
+          #     $game_temp.party_critical_hits_dealt[idx] = nil
+          #     $game_temp.party_direct_damage_taken[idx] = nil
+          #   end
+          # end
+          break
+        when 1   # Send to a Box
+          break
+        when 2   # See X's summary
+          pbFadeOutIn do
+            summary_scene = PokemonSummary_Scene.new
+            summary_screen = PokemonSummaryScreen.new(summary_scene, true)
+            summary_screen.pbStartScreen([pkmn], 0)
+          end
+        when 3   # Check party
+            pbPartyScreen(0, true, 2)
+        end
+      end
+    end
+    # Store as normal (add to party if there's space, or send to a Box if not)
+    stored_box = peer.pbStorePokemon($player, pkmn)
+    if stored_box < 0
+      pbMessage(_INTL("Se agregó a {1} al equipo.", pkmn.name))
+      #@initialItems[0][$player.party.length - 1] = pkmn.item_id if @initialItems
+      return
+    end
+    # Messages saying the Pokémon was stored in a PC box
+    box_name = peer.pbBoxName(stored_box)
+    pbMessage(_INTL("Se envió {1} a la caja \"{2}\"!", pkmn.name, box_name))
+end
+
+class Pokemon
+    def initialize(species, level, owner = $player, withMoves = true, recheck_form = true)
+        species_data = GameData::Species.get(species)
+        @species          = species_data.species
+        @form             = species_data.base_form
+        @forced_form      = nil
+        @time_form_set    = nil
+        self.level        = level
+        @steps_to_hatch   = 0
+        heal_status
+        @gender           = nil
+        @shiny            = nil
+        @ability_index    = nil
+        @ability          = nil
+        @nature           = nil
+        @nature_for_stats = nil
+        @item             = nil
+        @mail             = nil
+        @moves            = []
+        reset_moves if withMoves
+        @first_moves      = []
+        @ribbons          = []
+        @cool             = 0
+        @beauty           = 0
+        @cute             = 0
+        @smart            = 0
+        @tough            = 0
+        @sheen            = 0
+        @pokerus          = 0
+        @name             = nil
+        @happiness        = species_data.happiness
+        @poke_ball        = :POKEBALL
+        @markings         = []
+        @iv               = {}
+        @ivMaxed          = {}
+        @ev               = {}
+        @evo_move_count   = {}
+        @evo_crest_count  = {}
+        @evo_recoil_count = 0
+        @evo_step_count   = 0
+        GameData::Stat.each_main do |s|
+            @iv[s.id]       = rand(IV_STAT_LIMIT + 1)
+            @ev[s.id]       = 0
+        end
+        case owner
+        when Owner
+            @owner = owner
+        when Player, NPCTrainer
+            @owner = Owner.new_from_trainer(owner)
+        else
+            @owner = Owner.new(0, "", 2, 2)
+        end
+        @obtain_method    = 0   # Met
+        @obtain_method    = 4 if $game_switches && $game_switches[Settings::FATEFUL_ENCOUNTER_SWITCH]
+        @obtain_map       = ($game_map) ? $game_map.map_id : 0
+        @obtain_text      = nil
+        @obtain_level     = level
+        @hatched_map      = 0
+        @timeReceived     = Time.now.to_i
+        @timeEggHatched   = nil
+        @fused            = nil
+        @personalID       = rand(2**16) | (rand(2**16) << 16)
+        @hp               = 1
+        @totalhp          = 1
+        calc_stats
+        if @form == 0 && recheck_form
+            f = MultipleForms.call("getFormOnCreation", self)
+            if f
+                self.form = f
+                reset_moves if withMoves
+            end
+        end
+    end
+end
+
+if Settings::USE_NEW_EXP_SHARE
+    class Pokemon
+        attr_accessor(:expshare)    # Repartir experiencia
+        alias initialize_old initialize
+        def initialize(species,level,player=$player,withMoves=true, recheck_form = true)
+            initialize_old(species, level, player, withMoves, recheck_form)
+            $PokemonSystem.expshareon ||= 0
+            @expshare = ($PokemonGlobal&.expshare_enabled && $PokemonSystem.expshareon == 0) || 
+                       $player&.has_exp_all
+        end 
+    end
+end
