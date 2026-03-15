@@ -461,7 +461,9 @@ class Battle::AI
     end
     pbRegisterEnemySpecialAction(idxBattler)
     choices = pbGetMoveScores
+    puts @battle.choices.inspect
     pbChooseMove(choices)
+    puts @battle.choices.inspect
     PBDebug.log("")
     pbRegisterEnemySpecialAction2(idxBattler)
   end
